@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans+Condensed|Crete-Round|Libre+Franklin" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Onsocio</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="{{url_for('static', filename='css/mdb.min.css')}}" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="{{url_for('static', filename='css/style.css')}}" rel="stylesheet">
+   
+</head>
+
+<body  data-spy="scroll" data-target=".navbar" data-offset="50" >
+
+    <!-- /Start your project here-->
+     <header>
+
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-indigo">
+        <a class="navbar-brand" href="#" style="font-family:'Lobster', cursive;font-size: 30px;"><strong>OnSocio</strong></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link " href="#panel1">Login<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#panel2">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#panel4">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#panel3">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="view hm-black-light" id="panel1">
+        <div class="full-bg-img flex-center">
+            <div class="container ">
+                <div class="wow fadeInUp panel-login" style="width: 50%">
+                    <form  method="POST" action="http://localhost:5000/signin" >
+                        <p class="h4 text-center mb-4" style="font-family:'Fira Sans Condensed', sans-serif;">Sign in</p>
+
+                        <div class="md-form">
+                            <i class="fa fa-envelope prefix "></i>
+                            <input type="text" id="defaultForm-email" class="form-control" placeholder="your username" name="username" required>
+                        </div>
+
+                        <div class="md-form">
+                            <i class="fa fa-lock prefix"></i>
+                            <input type="password" id="defaultForm-pass" name="password" placeholder="your password" class="form-control" required>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-blue">Login<i class="fa fa-paper-plane-o ml-1"></i></button>
+                        </div>
+                        {%if notfound==1 %}
+                        <div class="alert alert-danger alert-dismissible">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>Username or password is not matching!</strong>
+                        </div>
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</header>
+<!--Main Navigation-->
+
+<!--Main Layout-->
+<div style="padding-top: 6%;" id="panel2">
+    <img src="static/images/newsent.jpg" style="float:left;margin-bottom:2%;margin-right:2%;margin-left: 2%;margin-top: 2%;" >
+    <div class="sentimg">
+        <h3 style="padding-top:1%;font-weight: bold;font-family:'Crete-Round'" >ABOUT US</h3><hr style="width:7%;border-color:orange;height:3px;background:orange;margin-top:0%;margin-left: 65%"  >
+        <p style="font-family:Libre Franklin;font-size: 18px">Opinion mining (sometimes known as sentiment analysis or emotion AI) refers to the use of natural language processing, text analysis, computational linguistics, and biometrics to systematically identify, extract, quantify, and study affective states and subjective information. Sentiment analysis is widely applied to voice of the customer materials such as reviews and survey responses, online and social media, and healthcare materials for applications that range from marketing to customer service to clinical medicine.</p>
+    </div>
+</div>
+    
+    <div id="panel4" class="pan4" style="margin-top: 7%;" >
+        <h2 style="font-family:'Crete-Round';font-weight: bold;text-align: center;">BECOME PART OF OUR CLIENTELE</h2><hr align="center" style="width:10%;border-color:orange;height:4px;background:orange;margin-top: 1%;"  >  
+        <p style="font-family:'Libre Franklin';text-align:center;font-size: 18px;">Ready to start your next hiring with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!</p>
+        <br>
+         <img src="static/images/twitterimg2.png" style="margin-bottom:2%;margin-right:2%;margin-left: 2%;margin-top: 7%;height:40%;width:40%;float:left;" >
+        <div class="card" style="width:40%;display: inline-block;margin-left: 10%;">
+            <div class="card-body">
+                <form >
+                    <p class="h4 text-center py-4">Sign up</p>
+
+                            <!-- Material input text -->
+                            <div class="md-form">
+                                <i class="fa fa-user prefix "></i>
+                                <input type="text" id="materialFormCardNameEx" class="form-control" placeholder="your name">
+                            </div>
+
+                            <!-- Material input email -->
+                            <div class="md-form">
+                                <i class="fa fa-envelope prefix "></i>
+                                <input type="email" id="materialFormCardEmailEx" class="form-control form-control-sm" placeholder="your email-id">
+                            </div>
+
+                            <!-- Material input password -->
+                            <div class="md-form">
+                                <i class="fa fa-lock prefix "></i>
+                                <input type="password" id="materialFormCardPasswordEx" class="form-control" placeholder="password">
+                            </div>
+                    
+                            <div class="md-form">
+                                <i class="fa fa-briefcase prefix"></i>
+                                <input type="text" id="materialFormCardPasswordEx" class="form-control" placeholder="your company name">
+                            </div>
+
+
+                            <div class="text-center py-4 mt-3">
+                                <button class="btn btn-cyan" type="submit">Register</button>
+                            </div>
+                </form>
+            </div>    
+        </div>
+    </div>
+    
+    
+    <div id="panel3" class="pan3" >
+        <h2 style="font-family:'Crete-Round';font-weight: bold;">LET'S GET IN TOUCH</h2><hr align="center" style="width:10%;border-color:orange;height:4px;background:orange;margin-top: 1%;"  >  
+        <p style="font-family:'Libre Franklin';text-align:center;font-size: 18px;">Ready to start your next hiring with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!</p>
+        <br>
+        <div class="iset">
+        <i class= "fa fa-phone fa-4x" ></i>
+            <h5>+91 9617798617</h5>
+        </div> 
+        <div class="iset">
+            <i class="fa fa-envelope fa-4x" aria-hidden="true" ></i>
+            <h5>mohdrahil7@gmail.com</h5>
+        </div>    
+    </div>
+    <div class="footer">
+        <p style="padding-top:1%;margin-bottom:0%;display: inline-block;"><span style="color: white;">&copy;2018 &nbsp;Copyright:OnSocio.com</span></p> 
+        <ul >
+            <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+            </span>
+            <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+            </span>
+            <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+            </span>
+            <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+            </span>
+            
+        </ul>
+    </div>
+    
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+</body>
+
+</html>

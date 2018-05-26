@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+@app.route("/result",methods=["GET","POST"])
+def result():
+    print("YEsssss")
+    username=request.form['twitterid']
+    name=request.cookies.get('name')
+    company = request.cookies.get('company')
+    position = request.cookies.get('position')
+    education = request.cookies.get('education')
+    email = request.cookies.get('email')
+    image = request.cookies.get('image')
+    print("this is working")
+#   tc.get_all_tweets(twitterid)
+    tweet = pd.read_csv('App_Data/%s_tweets.csv' % username)
+    face = tweet['text']
+    username=cla.operation(username)
+    return render_template("result.html",face=face)
+</body>
+</html>

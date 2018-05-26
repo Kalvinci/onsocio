@@ -1,0 +1,42 @@
+.top{
+    color:#ffc007;
+    font-size: 50px;
+    font-family: 'Lobster', cursive;
+}
+.nav li{
+    color:white;
+    font-size: 22px;
+    margin-top:2%;
+    margin-left:2%;
+}
+.panel-login {
+    padding:2%;
+    background-color: rgba(244, 246, 249,0.7);
+    width:50%;
+    margin: 10% 10% 20% 25%;
+}
+.back{
+    background: url("../images/DA.png")no-repeat center center;
+    background-size: cover;
+    padding-bottom: 3%;
+    
+}
+.loger{
+    padding:12% 10% 18% 30%;
+    font-size: 60px;
+    font-family: 'Lobster', cursive;
+    color:white;
+}
+.loger .btn{
+    margin-left: 18%;
+    font-size: 25px;
+    background:#edb100;  
+    font-family: 'Unica One', cursive;
+}
+.btn a {
+    color:white;
+}
+.cento{
+     color:black;
+    font-size: 25px;
+}

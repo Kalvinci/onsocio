@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+{% if not session.get(Loged_in) %}
+<head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans+Condensed|Crete-Round|Libre+Franklin|Open+Sans|Noto+Sans" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+   
+    <title>Onsocio</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="{{url_for('static', filename='css/mdb.min.css')}}" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="{{url_for('static', filename='css/style.css')}}" rel="stylesheet">
+   
+</head>
+    <body>
+        <header>
+
+    <nav class="navbar navbar-inverse fixed-top bg-indigo rightside" style="z-index: 1;">
+        <div class="container-fluid">
+            <span style="font-size: 30px;color:white;cursor: pointer" onclick="opennav()">&#9776;</span>
+            <div class="navbar-header">
+                <a style="font-family:'Lobster', cursive;font-size: 30px;color: white"><strong>OnSocio</strong></a>
+            </div>
+                <ul  class="nav navbar-nav navbar-right " >
+                    <li style="color: #D3D3D3;margin-top: 7px;"><a href="http://localhost:5000/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
+                </ul>
+        </div>    
+    </nav>
+            </header>
+            <form class="form-inline md-form" id="new" action="http://localhost:5000/result" method='POST'>
+                <div class="container-fluid" style="width: 70%;margin-top:20%;margin-left: 25%;">
+                    <div class="input-group md-form form-sm form1">
+                        <input type="text" placeholder="enter Twitter id" name="twitterid" id="Tweeting" style="padding:1%;display:inline-block;width: 50%;font-size: 20px"  required>
+                    <button  type="submit" class="btn btn-purple" style="display: inline-block;" onclick="loading()"><i class="fa fa-search" aria-hidden="true">&nbsp; get data</i></button>
+                </div>
+                </div>
+            </form>
+
+            <div  id="loadings" style="display:none;text-align:center;margin-top:19%;background-color:rgba(0,0,0,0);">
+                 <div class="loader container fluid">
+                 </div>
+                <span style="color:#146eff; animation:none;font-family:'Noto Sans', sans-serif;font-weight:300;">FETCHING DATA...</span>
+            </div>
+            {%if error==1 %}
+            <div class="alert alert-danger container" style="text-align: center;width:50%;" id="msg">
+             <strong>Twiiter id</strong>&nbsp;is not correct 
+            </div> 
+            {% endif %}
+
+        <div class="sidenav" id="mysidenav">
+            <span style="font-size:30px;margin-left: 250px;cursor: pointer;" onclick="closenav()"> &times;</span>
+            <img style="margin-top: 15px;width:280px;width:280px;border-radius: 50%;" src="{{image}}">
+            <div style="color: white;text-align:center;margin-top: 15px;font-size: 20px;background-color:#262525;text-transform:uppercase;">{{name}}</div>
+            <div class="info"><i class="fa fa-briefcase" aria-hidden="true"></i>&nbsp;{{company}}({{position}})</div>
+            <div class="info"><i class="fa fa-graduation-cap" aria-hidden="true"></i>&nbsp;{{education}}</div>
+            <div class="info"><i class="fa fa-at" aria-hidden="true"></i>&nbsp;{{email}}</div>
+        </div>
+         <div class="footer" style="position: absolute;bottom: 0px;">
+        <p style="padding-top:1%;margin-bottom:0%;display: inline-block;"><span style="color: white;">&copy;2018 &nbsp;Copyright:OnSocio.com</span></p> 
+        <ul >
+            <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+            </span>
+            <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+            </span>
+            <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+            </span>
+            <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+            </span>
+            
+        </ul>
+    </div>
+         <!-- SCRIPTS -->
+         <script>
+            function closenav()
+            {
+                document.getElementById("mysidenav").style.width="0px";
+                document.getElementById("mysidenav").style.padding="0px";
+            }
+             function opennav()
+            {
+                document.getElementById("mysidenav").style.width="300px";
+                document.getElementById("mysidenav").style.padding="10px";
+            }
+            function loading()
+            {
+            var x=document.getElementById("Tweeting").value;
+            if(x!=""){
+              document.getElementById("loadings").style.display="block";
+              document.getElementById("new").style.display="none";
+              document.getElementById("msg").style.display="none"; 
+              }
+            }
+        </script>
+    <!-- JQuery -->
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    </body>
+</html>
+
+{% else %}
+<script>
+    window.location="http://localhost:5000"
+</script>
+{% endif %}

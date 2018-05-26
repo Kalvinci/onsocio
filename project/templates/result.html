@@ -1,0 +1,218 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans+Condensed|Crete-Round|Libre+Franklin|Open+Sans|Noto+Sans" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+   
+    <title>OnSocio</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="{{url_for('static', filename='css/mdb.min.css')}}" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="{{url_for('static', filename='css/style.css')}}" rel="stylesheet">
+   
+</head>
+    <body>
+        <header>
+
+                <nav class="navbar navbar-inverse fixed-top bg-indigo rightside" style="z-index: 1;">
+                    <div class="container-fluid">
+                        <span style="font-size: 30px;color:white;cursor: pointer" onclick="opennav()">&#9776;</span>
+                        <div class="navbar-header">
+                            <a style="font-family:'Lobster', cursive;font-size: 30px;color: white"><strong>OnSocio</strong></a>
+                        </div>
+                            <ul  class="nav navbar-nav navbar-right " >
+                                <li style="color: #D3D3D3;margin-top: 7px;"><a href="http://localhost:5000/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
+                            </ul>
+                    </div>    
+                </nav>
+        </header>
+        <div class="sidenav" id="mysidenav">
+            <span style="font-size:30px;margin-left: 250px;cursor: pointer;" onclick="closenav()"> &times;</span>
+            <img style="margin-top: 15px;width:280px;width:280px;border-radius: 50%;" src="{{image}}">
+            <div style="color: white;text-align:center;margin-top: 15px;font-size: 20px;background-color:#262525;text-transform:uppercase;">{{name}}</div>
+            <div class="info"><i class="fa fa-briefcase" aria-hidden="true"></i>&nbsp;{{company}}({{position}})</div>
+            <div class="info"><i class="fa fa-graduation-cap" aria-hidden="true"></i>&nbsp;{{education}}</div>
+            <div class="info"><i class="fa fa-at" aria-hidden="true"></i>&nbsp;{{email}}</div>
+        </div>
+        <div class="container-fluid" style="margin-top:6%;text-align: center;">
+            <div style="display: inline-block">
+            <img src="http://twitter.com/{{username}}/profile_image?size=original" style="height:160px;width:160px;border-radius: 50%;display: inline-block">
+            </div>
+            <div style="display: inline-block">
+            <span style="font-size:22px;"><strong>{{twittername}}</strong></span>
+            <span style="font-size:18px;"><a href="https://twitter.com/{{username}}">{{username}}</a></span><br>
+            <span style="font-size:16px;">{{location}}</span>
+            </div>    
+        </div>
+        <div id="following" style="margin-top:2%;text-align:center;">
+            <div style="padding:1%;display: inline-block;text-align: center;"><strong>FOLLOWING</strong><br>
+                <button style="border-radius: 50%;height:60px;width:60px;background-color:#1a57ba;color: white;">{{following}}</button>
+            </div>
+            <div style="padding:1%;display:inline-block;text-align:center;">
+                <strong>FOLLOWERS</strong><br>
+                <button style="border-radius:50%;height:60px;width:60px;background-color:#1a57ba;color: white;">{{follower}}</button>
+            </div>
+            <div style="padding:1%;display: inline-block;text-align: center;"><strong>TOTAL TWEETS</strong><br>
+                <button style="border-radius: 50%;height:60px;width:60px;background-color:#1a57ba;color: white;">{{totaltweets}}</button>
+            </div> 
+        </div>
+        
+        <div id="charts" style="margin-top:2%;float: left;">
+        </div>
+        
+        <div id="pncharts" style="float:left;margin-top:2%;">
+        </div>  
+        {% if followings_classified !=[0,0,0,0] %}
+        <div id="followchart" style="margin-top:2%;display:inline-block;">
+        </div>
+        {% else %}
+        <div id="nofollowing" style="margin-top:2%;display:inline-block;">
+            <h3 style="margin-top:20%;">This person follows nobody</h3>
+        </div>
+        {% endif %}
+            <div style="font-size: 24px;text-align:center;width:100%; clear: both;"><strong>LATEST TWEETS</strong></div>
+                {%for i in tweet%}
+                 {% if loop.index<20 %}
+
+                    <blockquote class="blockquote bq-primary" style="margin-left:3px;">
+                    <i class="fa fa-quote-right w3-xxlarge"></i>
+                    <div>{{i}}</div>
+                    </blockquote>
+
+                  {% endif %}
+                {%endfor%}
+         <div class="footer" >
+        <p style="padding-top:1%;margin-bottom:0%;display: inline-block;"><span style="color: white;">&copy;2018 &nbsp;Copyright:OnSocio.com</span></p> 
+        <ul >
+            <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+            </span>
+            <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+            </span>
+            <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+            </span>
+            <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+            </span>
+            
+        </ul>
+    </div>
+        
+        <script>
+            function closenav()
+            {
+                document.getElementById("mysidenav").style.width="0px";
+                document.getElementById("mysidenav").style.padding="0px";
+            }
+             function opennav()
+            {
+                document.getElementById("mysidenav").style.width="300px";
+                document.getElementById("mysidenav").style.padding="10px";
+            }
+        </script>
+    <!-- JQuery -->
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- GOOGLE CHARTS -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>    
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        // chart for the category
+        google.charts.setOnLoadCallback(drawChart);
+        // chart for the positive negative
+        google.charts.setOnLoadCallback(drawChartposneg);
+         // chart for the following personality
+        google.charts.setOnLoadCallback(drawChartfollower);
+        function drawChart()
+        {
+            // Create the data table.
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'fields');
+            data.addColumn('number', 'tweets');
+            data.addRows([
+          ['Entertainment', {{res[0]}}],
+          ['Environment', {{res[1]}}],
+          ['politics', {{res[2]}}],
+          ['sports', {{res[3]}}],
+          ['technology', {{res[4]}}],
+          ['others', {{res[5]}}]
+        ]);
+
+        // Set chart options
+        var options = {'title':'Tweets In Different Fields',
+                       'width':435,
+                       'height':300,
+                       titleTextStyle: {
+                        fontSize: 14
+                          }};
+        var chart = new google.visualization.PieChart(document.getElementById('charts'));
+        chart.draw(data, options);
+      }
+        function drawChartposneg()
+        {
+            // Create the data table.
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'fields');
+            data.addColumn('number', 'tweets');
+            data.addRows([
+          ['positive tweets', {{pnres[0]}}],
+          ['negative tweets', {{pnres[1]}}],
+          ['neutral tweets', {{pnres[2]}}]
+        ]);
+
+        // Set chart options
+        var options = {'title':'Tweets Sentiments',
+                       'width':435,
+                       'height':300,
+                       titleTextStyle: {
+                        fontSize: 14
+                          }
+                        };
+        var chart = new google.visualization.PieChart(document.getElementById('pncharts'));
+        chart.draw(data, options);
+      }
+        
+        function drawChartfollower()
+        {
+            // Create the data table.
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'fields');
+            data.addColumn('number', 'tweets');
+            data.addRows([
+          ['sports', {{followings_classified[0]}}],
+          ['politcs', {{followings_classified[1]}}],
+          ['technology', {{followings_classified[2]}}],
+          ['entertainment', {{followings_classified[3]}}],
+        ]);
+
+        // Set chart options
+        var options = {'title':'Following Personality',
+                       'width':435,
+                       'height':300,
+                       titleTextStyle: {
+                        fontSize: 14
+                          }};
+        var chart = new google.visualization.PieChart(document.getElementById('followchart'));
+        chart.draw(data, options);
+      }
+    </script>
+    </body>
+</html>
