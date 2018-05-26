@@ -17,3 +17,9 @@ The jupyter notebooks provides you a way to create the required pickle files tha
 Place the pickle files into the project directory.
 
 I made this project using pycharm so it is necessary to add venv in the project folder which i haven't uploaded.
+
+The datasets and python scripts used to create them are in data directory.
+I have provided datasets for fields i.e., sports, entertainment, technology, politics, quotes(others) and environment only.
+The dataset used for sentiment analysis is Stanford twitter sentiment file which is available on various sites. Also put them in data folder and give appropriate names as given in jupyter notebook 'sklearn polarity.ipynb'.
+
+Any suggestions and improvements are welcome.
