@@ -12,4 +12,4 @@ Dependencies :
 The jupyter notebooks provide you a way to create the required pickle files that will be used by the project.
 Place the pickle files into the project directory.
 
-I had created this project using pycharm so it is necessary to add venv in the project folder which i haven't uploaded.
+I made this project using pycharm so it is necessary to add venv in the project folder which i haven't uploaded.
